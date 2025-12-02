@@ -30,22 +30,22 @@ The repository includes implementations for four main tasks of the course, each 
 
 ### 💊 Task 3: Hyperparameter Tuning with Bayesian Optimization
 
-* [cite_start]**Objective:** To optimize the structural features of a drug candidate to maximize its bioavailability (measured by logP), while respecting a constraint on its synthesis difficulty (Synthetic Accessibility - SA)[cite: 11, 17].
-* [cite_start]**Formalization:** The problem is defined as maximizing a noisy objective function $f(x)$ subject to an unknown constraint $v(x) < \kappa$[cite: 23].
-* [cite_start]**Approach:** A **Constrained Bayesian Optimization** strategy was implemented[cite: 791].
-    * [cite_start]Both the objective function and the constraint were modeled using **Gaussian Processes**[cite: 794].
-    * [cite_start]The acquisition function used is the **Expected Improvement (EI)**, modified to account for the probability of satisfying the constraint[cite: 795, 798].
-    * [cite_start]To improve numerical stability and exploration in a noisy environment, techniques such as **LogEI** and a *plug-in* estimate for the current optimum were used[cite: 804, 813].
+* **Objective:** To optimize the structural features of a drug candidate to maximize its bioavailability (measured by logP), while respecting a constraint on its synthesis difficulty (Synthetic Accessibility - SA)[cite: 11, 17].
+* **Formalization:** The problem is defined as maximizing a noisy objective function $f(x)$ subject to an unknown constraint $v(x) < \kappa$[cite: 23].
+* **Approach:** A **Constrained Bayesian Optimization** strategy was implemented[cite: 791].
+    * Both the objective function and the constraint were modeled using **Gaussian Processes**[cite: 794].
+    * The acquisition function used is the **Expected Improvement (EI)**, modified to account for the probability of satisfying the constraint[cite: 795, 798].
+    * To improve numerical stability and exploration in a noisy environment, techniques such as **LogEI** and a *plug-in* estimate for the current optimum were used[cite: 804, 813].
 
 ---
 
 ### 🤖 Task 4: Implementing an Off-policy RL algorithm
 
-* [cite_start]**Objective:** To implement an off-policy Reinforcement Learning (RL) algorithm to solve the **Cartpole** problem, which involves balancing a pole mounted on a controllable cart[cite: 612, 617, 618].
-* [cite_start]**Algorithm:** The solution is based on **Soft Actor-Critic (SAC)**, a modern off-policy algorithm that maximizes a combination of expected reward and policy entropy[cite: 233]. [cite_start]The entropy encourages greater exploration[cite: 233].
-* [cite_start]**Architecture:** The agent consists of three neural networks[cite: 234]:
-    1.  [cite_start]**Actor:** Approximates the stochastic policy $\pi_{\theta}$, which maps states to actions[cite: 235].
-    2.  [cite_start]**Critic:** Models two Q-functions ($Q_1, Q_2$) to mitigate overestimation bias[cite: 236, 249].
-    3.  [cite_start]**Critic Target:** Separate target networks, updated slowly (bootstrapping), to stabilize training[cite: 237, 250].
-* [cite_start]**Objective Function:** The agent maximizes the entropy-regularized expected reward, where the *temperature parameter* $\alpha$ balances the trade-off between exploitation and exploration[cite: 239, 240].
+* **Objective:** To implement an off-policy Reinforcement Learning (RL) algorithm to solve the **Cartpole** problem, which involves balancing a pole mounted on a controllable cart[cite: 612, 617, 618].
+* **Algorithm:** The solution is based on **Soft Actor-Critic (SAC)**, a modern off-policy algorithm that maximizes a combination of expected reward and policy entropy[cite: 233]. [cite_start]The entropy encourages greater exploration[cite: 233].
+* **Architecture:** The agent consists of three neural networks[cite: 234]:
+    1.  **Actor:** Approximates the stochastic policy $\pi_{\theta}$, which maps states to actions[cite: 235].
+    2.  **Critic:** Models two Q-functions ($Q_1, Q_2$) to mitigate overestimation bias[cite: 236, 249].
+    3.  **Critic Target:** Separate target networks, updated slowly (bootstrapping), to stabilize training[cite: 237, 250].
+* **Objective Function:** The agent maximizes the entropy-regularized expected reward, where the *temperature parameter* $\alpha$ balances the trade-off between exploitation and exploration[cite: 239, 240].
     $$ \pi^{*} = \arg\max_{\pi} \mathbb{E}_{\tau \sim \pi} \left[ \sum_{t=0}^{\infty} \gamma^t (R(x_t, a_t, x_{t+1}) + \alpha H(\pi(\cdot|x_t))) \right] $$
