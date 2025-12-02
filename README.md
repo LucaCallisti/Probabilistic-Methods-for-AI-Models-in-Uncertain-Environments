@@ -49,3 +49,7 @@ The repository includes implementations for four main tasks of the course, each 
     3.  **Critic Target:** Separate target networks, updated slowly (bootstrapping), to stabilize training.
 * **Objective Function:** The agent maximizes the entropy-regularized expected reward, where the *temperature parameter* $\alpha$ balances the trade-off between exploitation and exploration. $\pi^{\*}=\arg\max_{\pi}\mathbb{E}_{\tau \sim \pi}$
     $\pi^{\*}=\arg\max_{\pi}\mathbb{E}_{\tau \sim \pi}[ \sum_{t=0}^{\infty} \gamma^t (R(x_t, a_t, x_{t+1}) + \alpha H(\pi(\cdot|x_t)))]$
+  $$
+\pi^{\ast}=\arg\max_{\pi}\mathbb{E}_{\tau \sim \pi}\left[\sum_{t=0}^{\infty} \gamma^t \left(R(x_t, a_t, x_{t+1}) + \alpha H(\pi(\cdot|x_t))\right)\right]
+$$
+
