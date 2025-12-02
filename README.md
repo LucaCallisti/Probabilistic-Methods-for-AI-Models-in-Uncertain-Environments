@@ -41,11 +41,11 @@ The repository includes implementations for four main tasks of the course, each 
 
 ### 🤖 Task 4: Implementing an Off-policy RL algorithm
 
-* **Objective:** To implement an off-policy Reinforcement Learning (RL) algorithm to solve the **Cartpole** problem, which involves balancing a pole mounted on a controllable cart[cite: 612, 617, 618].
-* **Algorithm:** The solution is based on **Soft Actor-Critic (SAC)**, a modern off-policy algorithm that maximizes a combination of expected reward and policy entropy[cite: 233]. [cite_start]The entropy encourages greater exploration.
+* **Objective:** To implement an off-policy Reinforcement Learning (RL) algorithm to solve the **Cartpole** problem, which involves balancing a pole mounted on a controllable cart.
+* **Algorithm:** The solution is based on **Soft Actor-Critic (SAC)**, a modern off-policy algorithm that maximizes a combination of expected reward and policy entropy. The entropy encourages greater exploration.
 * **Architecture:** The agent consists of three neural networks:
     1.  **Actor:** Approximates the stochastic policy $\pi_{\theta}$, which maps states to actions.
     2.  **Critic:** Models two Q-functions ($Q_1, Q_2$) to mitigate overestimation bias.
     3.  **Critic Target:** Separate target networks, updated slowly (bootstrapping), to stabilize training.
 * **Objective Function:** The agent maximizes the entropy-regularized expected reward, where the *temperature parameter* $\alpha$ balances the trade-off between exploitation and exploration.
-    $$ \pi^{*} = \arg\max_{\pi} \mathbb{E}_{\tau \sim \pi} \left[ \sum_{t=0}^{\infty} \gamma^t (R(x_t, a_t, x_{t+1}) + \alpha H(\pi(\cdot|x_t))) \right] $$
+    $ \pi^{*} = \arg\max_{\pi} \mathbb{E}_{\tau \sim \pi} \left[ \sum_{t=0}^{\infty} \gamma^t (R(x_t, a_t, x_{t+1}) + \alpha H(\pi(\cdot|x_t))) \right] $
