@@ -47,5 +47,5 @@ The repository includes implementations for four main tasks of the course, each 
     1.  **Actor:** Approximates the stochastic policy $\pi_{\theta}$, which maps states to actions.
     2.  **Critic:** Models two Q-functions ($Q_1, Q_2$) to mitigate overestimation bias.
     3.  **Critic Target:** Separate target networks, updated slowly (bootstrapping), to stabilize training.
-* **Objective Function:** The agent maximizes the entropy-regularized expected reward, where the *temperature parameter* $\alpha$ balances the trade-off between exploitation and exploration.
+* **Objective Function:** The agent maximizes the entropy-regularized expected reward, where the *temperature parameter* $\alpha$ balances the trade-off between exploitation and exploration. $\pi$
     $\pi^{*}=\arg\max_{\pi}\mathbb{E}_{\tau \sim \pi}[ \sum_{t=0}^{\infty} \gamma^t (R(x_t, a_t, x_{t+1}) + \alpha H(\pi(\cdot|x_t)))]$
